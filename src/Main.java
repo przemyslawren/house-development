@@ -15,6 +15,6 @@ public class Main {
         tenat1.addTenantLetter(tenantLetter2);
         tenat1.addTenantLetter(tenantLetter3);
 
-        System.out.println(tenat1.getTenantLetters());
+        System.out.println("Liczba listów dla 1 najemcy: " + tenat1.getTenantLetters().size());
     }
 }
