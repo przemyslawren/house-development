@@ -14,4 +14,20 @@ public class Apartment {
         this.endDate = endDate;
 
     }
+
+    public String toString() {
+        return "Apartment: " + tenants + ", " + area + ", " + startDate + ", " + endDate;
+    }
+
+    public void addTenant(Tenant tenant) {
+        this.tenants.add(tenant);
+    }
+
+    public void removeTenant(Tenant tenant) {
+        this.tenants.remove(tenant);
+    }
+
+    public List<Tenant> getTenants() {
+        return this.tenants;
+    }
 }
