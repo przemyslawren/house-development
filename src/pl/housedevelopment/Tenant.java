@@ -1,3 +1,5 @@
+package pl.housedevelopment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ public class Tenant extends Person {
     }
 
     public String toString() {
-        return "Tenant: " + super.toString();
+        return "pl.housedevelopment.Tenant: " + super.toString();
     }
 
     public void addTenantLetter(TenantLetter tenantLetter) {

@@ -1,3 +1,7 @@
+package pl.housedevelopment.vehicle;
+
+import pl.housedevelopment.EngineType;
+
 public class AmphibiousVehicle extends Vehicle {
     double height;
 

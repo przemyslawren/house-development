@@ -1,6 +1,9 @@
+package pl.housedevelopment;
+
 import java.util.List;
 
 public class Apartment {
+
 
     private List<Tenant> tenants;
     private double area;
@@ -16,7 +19,7 @@ public class Apartment {
     }
 
     public String toString() {
-        return "Apartment: " + tenants + ", " + area + ", " + startDate + ", " + endDate;
+        return "pl.housedevelopment.Apartment: " + tenants + ", " + area + ", " + startDate + ", " + endDate;
     }
 
     public void addTenant(Tenant tenant) {

@@ -1,3 +1,5 @@
+package pl.housedevelopment;
+
 import java.util.List;
 
 public class Estate {
@@ -8,7 +10,7 @@ public class Estate {
     }
 
     public String toString() {
-        return "Estate: " + apartmentBlocks;
+        return "pl.housedevelopment.Estate: " + apartmentBlocks;
     }
 
     public void addApartmentBlock(ApartmentBlock apartmentBlock) {

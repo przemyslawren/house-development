@@ -1,3 +1,7 @@
+package pl.housedevelopment.vehicle;
+
+import pl.housedevelopment.EngineType;
+
 abstract class Vehicle {
     private String name;
     private double surfaceArea;

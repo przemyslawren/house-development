@@ -1,3 +1,5 @@
+package pl.housedevelopment;
+
 public class TenantLetter {
 
     private Tenant tenant;
@@ -13,7 +15,7 @@ public class TenantLetter {
     }
 
     public String toString() {
-        return "TenantLetter: " + tenant + ", " + date + ", " + content + ", " + debt;
+        return "pl.housedevelopment.TenantLetter: " + tenant + ", " + date + ", " + content + ", " + debt;
     }
 
 }

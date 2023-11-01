@@ -1,3 +1,7 @@
+package pl.housedevelopment.vehicle;
+
+import pl.housedevelopment.EngineType;
+
 public class MotorcycleVehicle extends Vehicle {
     double maxSpeed;
 

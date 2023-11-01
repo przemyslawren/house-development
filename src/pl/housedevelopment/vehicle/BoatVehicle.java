@@ -1,3 +1,7 @@
+package pl.housedevelopment.vehicle;
+
+import pl.housedevelopment.EngineType;
+
 public class BoatVehicle extends Vehicle {
     double length;
 
