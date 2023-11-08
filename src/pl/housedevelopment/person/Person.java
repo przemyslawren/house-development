@@ -1,4 +1,4 @@
-package pl.housedevelopment;
+package pl.housedevelopment.person;
 
 public class Person {
     private String name;

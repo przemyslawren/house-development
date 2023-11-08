@@ -1,7 +1,5 @@
 package pl.housedevelopment.vehicle;
 
-import pl.housedevelopment.EngineType;
-
 public class OffroadVehicle extends Vehicle {
     private double loadCapacity;
 

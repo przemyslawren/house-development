@@ -1,5 +1,7 @@
 package pl.housedevelopment;
 
+import pl.housedevelopment.person.Tenant;
+
 public class TenantLetter {
 
     private Tenant tenant;
@@ -15,7 +17,7 @@ public class TenantLetter {
     }
 
     public String toString() {
-        return "pl.housedevelopment.TenantLetter: " + tenant + ", " + date + ", " + content + ", " + debt;
+        return "TenantLetter: " + tenant + ", " + date + ", " + content + ", " + debt;
     }
 
 }

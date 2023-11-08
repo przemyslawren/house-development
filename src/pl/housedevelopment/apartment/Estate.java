@@ -1,16 +1,17 @@
-package pl.housedevelopment;
+package pl.housedevelopment.apartment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Estate {
     List<ApartmentBlock> apartmentBlocks;
 
-    public Estate(List<ApartmentBlock> apartmentBlocks) {
-        this.apartmentBlocks = apartmentBlocks;
+    public Estate() {
+        this.apartmentBlocks = new ArrayList<>();
     }
 
     public String toString() {
-        return "pl.housedevelopment.Estate: " + apartmentBlocks;
+        return "\nEstate: " + apartmentBlocks;
     }
 
     public void addApartmentBlock(ApartmentBlock apartmentBlock) {

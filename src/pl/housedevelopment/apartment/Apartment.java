@@ -1,5 +1,8 @@
-package pl.housedevelopment;
+package pl.housedevelopment.apartment;
 
+import pl.housedevelopment.person.Tenant;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Apartment {
@@ -10,16 +13,16 @@ public class Apartment {
     private String startDate;
     private String endDate;
 
-    public Apartment(List<Tenant> tenants, double area, String startDate, String endDate) {
-        this.tenants = tenants;
+    public Apartment(double area, String startDate, String endDate) {
         this.area = area;
         this.startDate = startDate;
         this.endDate = endDate;
-
+        this.tenants = new ArrayList<>();
     }
 
     public String toString() {
-        return "pl.housedevelopment.Apartment: " + tenants + ", " + area + ", " + startDate + ", " + endDate;
+        return "\nApartment:" + tenants +
+                ", " + area + ", " + startDate + ", " + endDate;
     }
 
     public void addTenant(Tenant tenant) {
