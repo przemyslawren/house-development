@@ -7,13 +7,13 @@ import java.util.List;
 
 public class Person {
 
-    private boolean isPrimaryTenant;
+    private boolean isTenant;
     List<TenantLetter> tenantLetters;
-    private String name;
-    private String surname;
-    private int personalIDNumber;
+    final private String name;
+    final private String surname;
+    final private int personalIDNumber;
     private String address;
-    private String dateOfBirth;
+    final private String dateOfBirth;
 
     public Person(String name, String surname, int personalIDNumber, String address, String dateOfBirth) {
         this.name = name;
@@ -21,16 +21,16 @@ public class Person {
         this.personalIDNumber = personalIDNumber;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
-        this.isPrimaryTenant = false;
+        this.isTenant = false;
         this.tenantLetters = new ArrayList<>();
     }
 
-    public boolean isPrimaryTenant() {
-        return isPrimaryTenant;
+    public void setTenant() {
+        isTenant = true;
     }
 
-    public void setPrimaryTenant(boolean primaryTenant) {
-        isPrimaryTenant = primaryTenant;
+    public boolean isTenant() {
+        return isTenant;
     }
 
     public void addTenantLetter(TenantLetter tenantLetter) {
