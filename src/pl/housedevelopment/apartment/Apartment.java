@@ -26,6 +26,9 @@ public class Apartment {
     }
 
     public void addTenant(Tenant tenant) {
+        if (tenants.isEmpty()) {
+            tenant.setPrimaryTenant(true);
+        }
         this.tenants.add(tenant);
     }
 

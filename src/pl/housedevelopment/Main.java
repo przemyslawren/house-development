@@ -3,11 +3,7 @@ package pl.housedevelopment;
 import pl.housedevelopment.apartment.Apartment;
 import pl.housedevelopment.apartment.ApartmentBlock;
 import pl.housedevelopment.apartment.Estate;
-import pl.housedevelopment.person.Person;
 import pl.housedevelopment.person.Tenant;
-import pl.housedevelopment.vehicle.AmphibiousVehicle;
-import pl.housedevelopment.vehicle.EngineType;
-import pl.housedevelopment.vehicle.VehicleType;
 
 public class Main {
     public static void main(String[] args) {
