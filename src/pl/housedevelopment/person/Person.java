@@ -1,6 +1,14 @@
 package pl.housedevelopment.person;
 
+import pl.housedevelopment.TenantLetter;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person {
+
+    private boolean isPrimaryTenant;
+    List<TenantLetter> tenantLetters;
     private String name;
     private String surname;
     private int personalIDNumber;
@@ -13,6 +21,28 @@ public class Person {
         this.personalIDNumber = personalIDNumber;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
+        this.isPrimaryTenant = false;
+        this.tenantLetters = new ArrayList<>();
+    }
+
+    public boolean isPrimaryTenant() {
+        return isPrimaryTenant;
+    }
+
+    public void setPrimaryTenant(boolean primaryTenant) {
+        isPrimaryTenant = primaryTenant;
+    }
+
+    public void addTenantLetter(TenantLetter tenantLetter) {
+        this.tenantLetters.add(tenantLetter);
+    }
+
+    public void removeTenantLetter(TenantLetter tenantLetter) {
+        this.tenantLetters.remove(tenantLetter);
+    }
+
+    public List<TenantLetter> getTenantLetters() {
+        return this.tenantLetters;
     }
 
     public String toString() {
