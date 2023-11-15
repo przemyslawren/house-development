@@ -4,10 +4,10 @@ public class Person {
     private String name;
     private String surname;
     private int personalIDNumber;
-    private String address;
+    private Address address;
     private String dateOfBirth;
 
-    public Person(String name, String surname, int personalIDNumber, String address, String dateOfBirth) {
+    public Person(String name, String surname, int personalIDNumber, Address address, String dateOfBirth) {
         this.name = name;
         this.surname = surname;
         this.personalIDNumber = personalIDNumber;

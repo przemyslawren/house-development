@@ -3,12 +3,14 @@ package pl.housedevelopment;
 import pl.housedevelopment.apartment.Apartment;
 import pl.housedevelopment.apartment.ApartmentBlock;
 import pl.housedevelopment.apartment.Estate;
+import pl.housedevelopment.person.Address;
 import pl.housedevelopment.person.Tenant;
 
 public class Main {
     public static void main(String[] args) {
 
-        Tenant tenant1 = new Tenant("Jan", "Kowalski", 123456789, "Królowej Jadwigi 10/1", "01.01.1990");
+
+        Tenant tenant1 = new Tenant("Jan", "Kowalski", 123456789,new Address(), "01.01.1990");
         Tenant tenant2 = new Tenant("Małgorzata", "Kowalska", 123456789, "Królowej Jadwigi 10/1", "01.01.1990");
         Tenant tenant3 = new Tenant("Adam", "Nowak", 123456789, "Królowej Jadwigi 10/1", "01.01.1990");
         Tenant tenant4 = new Tenant("Marysia", "Nowakowska", 123456789, "Królowej Jadwigi 10/1", "01.01.1990");

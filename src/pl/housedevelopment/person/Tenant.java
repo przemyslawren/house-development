@@ -8,7 +8,7 @@ import java.util.List;
 public class Tenant extends Person {
     private boolean isPrimaryTenant;
     List<TenantLetter> tenantLetters;
-    public Tenant(String name, String surname, int personalIDNumber, String address, String dateOfBirth) {
+    public Tenant(String name, String surname, int personalIDNumber, Address address, String dateOfBirth) {
         super(name, surname, personalIDNumber, address, dateOfBirth);
         this.isPrimaryTenant = false;
         this.tenantLetters = new ArrayList<>();
