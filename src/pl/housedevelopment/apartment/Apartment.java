@@ -8,7 +8,6 @@ public class Apartment {
 
     private int id;
     private List<Person> tenants;
-    private static final int MAX_TENANTS = 5;
     private double volume;
 
     public Apartment(double volume) {
@@ -33,13 +32,6 @@ public class Apartment {
         return this.volume;
     }
 
-    public void addTenant(Person tenant) {
-        if (tenants.isEmpty()) {
-            tenant.setTenant();
-        }
-
-        this.tenants.add(tenant);
-    }
 
     public void removeTenant(Person tenant) {
         this.tenants.remove(tenant);
