@@ -76,44 +76,49 @@ public class Main {
             choice = scanner.nextLine();
             switch (choice) {
                 case "a":
-                    System.out.println("Wyświetl wszystkie apartamenty");
+                    System.out.println("Show all the apartments");
                         for (Apartment apartment : apartmentLinkedList) {
                             System.out.println(apartment);
                         }
-                        textMenu();
+                        seeMenu();
                     break;
                 case "p":
-                    System.out.println("Wyświetl wszystkie parkingi");
+                    System.out.println("Show all the parking spaces");
                         for (ParkingSpace parkingSpace : parkingSpaceLinkedList) {
                             System.out.println(parkingSpace);
                         }
-                        textMenu();
+                        seeMenu();
                     break;
                 case "o":
-                    System.out.println("Wyświetl wszystkie osoby");
+                    System.out.println("Show all the persons");
                         for (Tenant tenant : tenantList) {
                             System.out.println(tenant);
                         }
-                        textMenu();
+                        seeMenu();
                     break;
-                case "?":
+                case "m":
                     textMenu();
                     break;
                 case "q":
-                    System.out.println("Zakończono działanie programu");
+                    System.out.println("Finishing the program");
                     break;
                 default:
-                    System.out.println("Niepoprawny wybór");
+                    System.out.println("No such option, try again");
                     break;
             }
         } while (!choice.equals("q"));
     }
 
     public static void textMenu() {
-        System.out.println("a: Wyświetl wszystkie apartamenty");
-        System.out.println("p: Wyświetl wszystkie parkingi");
-        System.out.println("o: Wyświetl wszystkie osoby");
-        System.out.println("?: Powrót do menu");
-        System.out.println("q: Aby zakończyć działanie programu");
+        System.out.println("c: Check in a person");
+        System.out.println("a: Show all the apartments");
+        System.out.println("p: Show all the parking spaces");
+        System.out.println("o: Show all the persons");
+        System.out.println("m: Show the menu");
+        System.out.println("q: Finish the program");
+    }
+
+    public static void seeMenu() {
+        System.out.println("m: Show the menu");
     }
 }

@@ -9,8 +9,8 @@ import java.util.List;
 public class Tenant extends Person {
     private boolean isMainTenant;
     List<TenantLetter> tenantLetters;
-    public Tenant(String name, String surname, String personalIDNumber, Address address, String dateOfBirth) {
-        super(name, surname, personalIDNumber, address, dateOfBirth);
+    public Tenant(String name, String surname, String personalId, Address address, String dateOfBirth) {
+        super(name, surname, personalId, address, dateOfBirth);
         this.isMainTenant = false;
         this.tenantLetters = new ArrayList<>();
     }
@@ -21,6 +21,10 @@ public class Tenant extends Person {
 
     public boolean getMainTenant() {
         return isMainTenant;
+    }
+
+    public void checkin(Tenant tenant, Apartment apartment) {
+        apartment.addTenant(tenant);
     }
 
     public String toString() {

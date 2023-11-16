@@ -16,7 +16,7 @@ public class Person {
     }
 
     public String toString() {
-        return  name + " " + surname + ", " + personalId + ", " + address + ", " + dateOfBirth;
+        return name + " " + surname + ", " + personalId + ", " + address + ", " + dateOfBirth;
     }
 
     public String getName() {
