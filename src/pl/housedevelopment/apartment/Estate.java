@@ -3,32 +3,20 @@ package pl.housedevelopment.apartment;
 import pl.housedevelopment.person.Developer;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Estate {
-    List<ApartmentBlock> apartmentBlocks;
     Developer developer;
+    LinkedList<Block> blocks;
 
-    public Estate(Developer developer, List<ApartmentBlock> apartmentBlocks) {
+    public Estate(Developer developer, LinkedList<Block> blocks) {
         this.developer = developer;
-        this.apartmentBlocks = new ArrayList<>();
+        this.blocks = blocks;
     }
 
     public String toString() {
-        return "\nEstate: " + apartmentBlocks;
+        return "Estate{" + "developer=" + developer + ", block=" + blocks + '}';
     }
-
-    public void addApartmentBlock(ApartmentBlock apartmentBlock) {
-        this.apartmentBlocks.add(apartmentBlock);
-    }
-
-    public void removeApartmentBlock(ApartmentBlock apartmentBlock) {
-        this.apartmentBlocks.remove(apartmentBlock);
-    }
-
-    public List<ApartmentBlock> getApartmentBlocks() {
-        return this.apartmentBlocks;
-    }
-
 
 }

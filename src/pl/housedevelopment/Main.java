@@ -1,20 +1,16 @@
 package pl.housedevelopment;
 import pl.housedevelopment.person.Developer;
 
-
-import java.util.LinkedList;
-
 public class Main {
     public static void main(String[] args) {
         startClock();
         startingData();
         mainMenu();
     }
-
     public static void startClock() {
 
     }
-
+    //entry data to the program
     public static void startingData() {
         Developer developer = Developer.getInstance();
 
