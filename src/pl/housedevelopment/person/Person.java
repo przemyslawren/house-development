@@ -8,7 +8,7 @@ import java.util.List;
 public class Person {
     private String name;
     private String surname;
-    private int personalIDNumber;
+    final private int personalIDNumber;
     private Address address;
     private String dateOfBirth;
 
