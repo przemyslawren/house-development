@@ -1,20 +1,20 @@
 package pl.housedevelopment.apartment;
 
+import pl.housedevelopment.interfaces.TenantAction;
 import pl.housedevelopment.person.Tenant;
 
-public class ParkingSpace extends Property {
-    private Tenant tenant;
+public class ParkingSpace extends Property implements TenantAction {
+    private Tenant mainTenant;
     public ParkingSpace(double area) {
         super(area);
-        this.tenant = null;
     }
 
-    public boolean addTenant(Tenant tenant) {
-        if (this.tenant == null) {
-            this.tenant = tenant;
-            return true;
+    public void addTenant(Tenant tenant) {
+        if (this.mainTenant == null) {
+            tenant.setMainTenant(true);
+            this.mainTenant = tenant;
         } else {
-            return false;
+            System.out.println("Parking space is already taken");
         }
     }
 }
