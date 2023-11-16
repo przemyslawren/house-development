@@ -15,6 +15,6 @@ public class Address {
     }
 
     public String toString() {
-        return street + " " + houseNumber + "/" + ", " + postalCode + " " + city;
+        return street + " " + houseNumber  + ", " + postalCode + " " + city;
     }
 }

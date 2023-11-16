@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Apartment extends Property {
 
+    ParkingSpace parkingSpace;
     private List<Tenant> tenants;
 
     public Apartment(double area) {
@@ -17,13 +18,8 @@ public class Apartment extends Property {
         super(length * width * height);
     }
 
-    public boolean addTenant(Tenant tenant) {
-        if (tenants.isEmpty()) {
-            tenants.add(tenant);
-            return true;
-        } else {
-            return false;
-        }
+    public void addTenant(Tenant tenant) {
+        this.tenants.add(tenant);
     }
 
     public String toString() {
