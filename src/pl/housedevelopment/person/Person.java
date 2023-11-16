@@ -1,26 +1,41 @@
 package pl.housedevelopment.person;
 
-import pl.housedevelopment.TenantLetter;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Person {
-    private String name;
-    private String surname;
-    final private int personalID;
-    private Address address;
-    private String dateOfBirth;
+    protected String name;
+    protected String surname;
+    final protected int personalId;
+    protected Address address;
+    protected String dateOfBirth;
 
-    public Person(String name, String surname, int personalID, Address address, String dateOfBirth) {
+    public Person(String name, String surname, int personalId, Address address, String dateOfBirth) {
         this.name = name;
         this.surname = surname;
-        this.personalID = personalID;
+        this.personalId = personalId;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
     }
 
     public String toString() {
-        return  name + " " + surname + ", " + personalID + ", " + address + ", " + dateOfBirth;
+        return  name + " " + surname + ", " + personalId + ", " + address + ", " + dateOfBirth;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getPersonalId() {
+        return String.valueOf(personalId);
+    }
+
+    public String getAddress() {
+        return address.toString();
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 }

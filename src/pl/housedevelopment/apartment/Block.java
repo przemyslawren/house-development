@@ -16,7 +16,7 @@ public class Block {
     }
 
     public String toString() {
-        return "Block{" + apartments + ", " + parkingSpaces + '}';
+        return "Block {" + apartments + ", " + parkingSpaces + '}';
     }
 
 }

@@ -17,4 +17,9 @@ public class ParkingSpace extends Property implements TenantAction {
             System.out.println("Parking space is already taken");
         }
     }
+
+    public String toString() {
+        return "\nParking space: " + mainTenant +
+                ", " + area;
+    }
 }

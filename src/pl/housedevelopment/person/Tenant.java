@@ -18,8 +18,17 @@ public class Tenant extends Person {
         this.isMainTenant = isMainTenant;
     }
 
-    public String toString() {
-        return "\nTenant: " + super.toString() + "," + tenantLetters;
+    public boolean getMainTenant() {
+        return isMainTenant;
     }
+
+    public String toString() {
+        return super.toString() + ", " + tenantLetters + "\n";
+    }
+
+    public String getName() {
+        return super.name;
+    }
+
 
 }
