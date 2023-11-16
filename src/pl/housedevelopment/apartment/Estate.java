@@ -1,12 +1,16 @@
 package pl.housedevelopment.apartment;
 
+import pl.housedevelopment.person.Developer;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Estate {
     List<ApartmentBlock> apartmentBlocks;
+    Developer developer;
 
-    public Estate() {
+    public Estate(Developer developer, List<ApartmentBlock> apartmentBlocks) {
+        this.developer = developer;
         this.apartmentBlocks = new ArrayList<>();
     }
 
