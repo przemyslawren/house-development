@@ -1,6 +1,7 @@
 package pl.housedevelopment.person;
 
 import pl.housedevelopment.TenantLetter;
+import pl.housedevelopment.apartment.Apartment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public class Tenant extends Person {
     private boolean isMainTenant;
     List<TenantLetter> tenantLetters;
-    public Tenant(String name, String surname, int personalIDNumber, Address address, String dateOfBirth) {
+    public Tenant(String name, String surname, String personalIDNumber, Address address, String dateOfBirth) {
         super(name, surname, personalIDNumber, address, dateOfBirth);
         this.isMainTenant = false;
         this.tenantLetters = new ArrayList<>();
@@ -23,12 +24,17 @@ public class Tenant extends Person {
     }
 
     public String toString() {
-        return super.toString() + ", " + tenantLetters + "\n";
+        StringBuilder sb = new StringBuilder();
+        if (getMainTenant()) {
+            sb.append(" - Main Tenant").append("\n");
+            sb.append("   Full Name: ").append(getName()).append(" ").append(getSurname()).append("\n");
+        } else {
+            sb.append(" - Tenant").append("\n");
+            sb.append("   Full Name: ").append(getName()).append(" ").append(getSurname()).append("\n");
+        }
+        sb.append("   PersonalID: ").append(getPersonalId()).append("\n");
+        sb.append("   Address: ").append(getAddress()).append("\n");
+        sb.append("   Date of Birth: ").append(getDateOfBirth()).append("\n\n");
+        return sb.toString();
     }
-
-    public String getName() {
-        return super.name;
-    }
-
-
 }

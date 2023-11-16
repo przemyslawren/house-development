@@ -22,6 +22,7 @@ public class Apartment extends Property implements TenantAction {
 
     public Apartment(double length, double width, double height) {
         super(length * width * height);
+        this.tenants = new ArrayList<>();
     }
 
     public void addTenant(Tenant tenant) {
@@ -40,6 +41,16 @@ public class Apartment extends Property implements TenantAction {
         sb.append("Area: ").append(String.format("%.2f", area)).append(" sqm\n");
         sb.append("Tenants:\n");
 
+        if (tenants.isEmpty()) {
+            sb.append(" - No tenants\n");
+        } else {
+            sb.append(printTenants());
+        }
+        return sb.toString();
+    }
+
+    public String printTenants() {
+        StringBuilder sb = new StringBuilder();
         for (Tenant tenant : tenants) {
             if (tenant.getMainTenant()) {
                 sb.append(" - Main Tenant").append("\n");
@@ -52,7 +63,6 @@ public class Apartment extends Property implements TenantAction {
             sb.append("   Address: ").append(tenant.getAddress()).append("\n");
             sb.append("   Date of Birth: ").append(tenant.getDateOfBirth()).append("\n\n");
         }
-
         return sb.toString();
     }
 }

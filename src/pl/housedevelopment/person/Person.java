@@ -1,13 +1,13 @@
 package pl.housedevelopment.person;
 
 public class Person {
-    protected String name;
-    protected String surname;
-    final protected int personalId;
-    protected Address address;
-    protected String dateOfBirth;
+    private String name;
+    private String surname;
+    final protected String personalId;
+    private Address address;
+    private String dateOfBirth;
 
-    public Person(String name, String surname, int personalId, Address address, String dateOfBirth) {
+    public Person(String name, String surname, String personalId, Address address, String dateOfBirth) {
         this.name = name;
         this.surname = surname;
         this.personalId = personalId;
@@ -28,7 +28,7 @@ public class Person {
     }
 
     public String getPersonalId() {
-        return String.valueOf(personalId);
+        return personalId;
     }
 
     public String getAddress() {
