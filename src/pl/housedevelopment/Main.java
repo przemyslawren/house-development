@@ -1,11 +1,6 @@
 package pl.housedevelopment;
-
-import pl.housedevelopment.apartment.Apartment;
-import pl.housedevelopment.apartment.ApartmentBlock;
-import pl.housedevelopment.apartment.Estate;
-import pl.housedevelopment.person.Address;
 import pl.housedevelopment.person.Developer;
-import pl.housedevelopment.person.Tenant;
+
 
 import java.util.LinkedList;
 

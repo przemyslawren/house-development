@@ -1,5 +1,10 @@
 package pl.housedevelopment.person;
 
+import pl.housedevelopment.TenantLetter;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person {
     private String name;
     private String surname;
