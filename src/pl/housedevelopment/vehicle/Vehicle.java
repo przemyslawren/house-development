@@ -2,15 +2,15 @@ package pl.housedevelopment.vehicle;
 
 abstract class Vehicle {
     private String name;
-    private double surfaceArea;
+    private double area;
     private VehicleType vehicleType;
     private EngineType engineType;
     private int horsepower;
     private double engineCapacity;
 
-    public Vehicle(String name, double surfaceArea, VehicleType vehicleType, EngineType engineType, int horsepower, double engineCapacity) {
+    public Vehicle(String name, double area, VehicleType vehicleType, EngineType engineType, int horsepower, double engineCapacity) {
         this.name = name;
-        this.surfaceArea = surfaceArea;
+        this.area = area;
         this.vehicleType = vehicleType;
         this.engineType = engineType;
         this.horsepower = horsepower;

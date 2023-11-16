@@ -42,7 +42,7 @@ public class Main {
         ParkingSpace p2 = new ParkingSpace(30);
         ParkingSpace p3 = new ParkingSpace(30);
         ParkingSpace p4 = new ParkingSpace(30);
-        ParkingSpace p5 = new ParkingSpace(30);
+        ParkingSpace p5 = new ParkingSpace(5,3,2);
 
         LinkedList<ParkingSpace> parkingSpaceLinkedList = new LinkedList<>();
         parkingSpaceLinkedList.add(p1);

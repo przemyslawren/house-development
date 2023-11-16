@@ -9,6 +9,10 @@ public class ParkingSpace extends Property implements TenantAction {
         super(area);
     }
 
+    public ParkingSpace(double length, double width, double height) {
+        super(length * width * height);
+    }
+
     public void addTenant(Tenant tenant) {
         if (this.mainTenant == null) {
             tenant.setMainTenant(true);
