@@ -1,5 +1,8 @@
 package pl.housedevelopment;
+import pl.housedevelopment.apartment.Apartment;
 import pl.housedevelopment.apartment.Block;
+import pl.housedevelopment.apartment.ParkingSpace;
+import pl.housedevelopment.apartment.Property;
 import pl.housedevelopment.person.Address;
 import pl.housedevelopment.person.Developer;
 import pl.housedevelopment.person.Tenant;
@@ -20,7 +23,12 @@ public class Main {
         Developer developer = Developer.getInstance();
         LinkedList<Block> blocks = new LinkedList<>();
         Address address = new Address("Redutowa", "130", "01-106", "Warsaw");
-        Tenant tenant = new Tenant("Jan", "Kowalski", 123456789, address, "01-01-2000");
+
+
+
+
+        Apartment apartment = new Apartment(152.30);
+
     }
 
     public static void mainMenu() {

@@ -1,12 +1,12 @@
 package pl.housedevelopment.apartment;
-import pl.housedevelopment.person.Person;
+import pl.housedevelopment.person.Tenant;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Apartment extends Property {
 
-    private List<Person> tenants;
+    private List<Tenant> tenants;
 
     public Apartment(double area) {
         super(area);
@@ -15,6 +15,15 @@ public class Apartment extends Property {
 
     public Apartment(double length, double width, double height) {
         super(length * width * height);
+    }
+
+    public boolean addTenant(Tenant tenant) {
+        if (tenants.isEmpty()) {
+            tenants.add(tenant);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String toString() {
