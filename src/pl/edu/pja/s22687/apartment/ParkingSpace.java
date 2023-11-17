@@ -1,7 +1,7 @@
-package pl.housedevelopment.apartment;
+package pl.edu.pja.s22687.apartment;
 
-import pl.housedevelopment.interfaces.TenantAction;
-import pl.housedevelopment.person.Tenant;
+import pl.edu.pja.s22687.interfaces.TenantAction;
+import pl.edu.pja.s22687.person.Tenant;
 
 import java.util.List;
 

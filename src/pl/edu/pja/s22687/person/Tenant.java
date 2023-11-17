@@ -1,7 +1,6 @@
-package pl.housedevelopment.person;
+package pl.edu.pja.s22687.person;
 
-import pl.housedevelopment.TenantLetter;
-import pl.housedevelopment.apartment.Apartment;
+import pl.edu.pja.s22687.TenantLetter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +22,7 @@ public class Tenant extends Person {
         return isMainTenant;
     }
 
-    public void checkin(Tenant tenant, Apartment apartment) {
-        apartment.addTenant(tenant);
-    }
+
 
     public String toString() {
         StringBuilder sb = new StringBuilder();

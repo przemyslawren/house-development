@@ -1,6 +1,6 @@
-package pl.housedevelopment;
+package pl.edu.pja.s22687;
 
-import pl.housedevelopment.person.Tenant;
+import pl.edu.pja.s22687.person.Tenant;
 
 public class TenantLetter {
 

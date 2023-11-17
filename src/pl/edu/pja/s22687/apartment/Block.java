@@ -1,8 +1,6 @@
-package pl.housedevelopment.apartment;
+package pl.edu.pja.s22687.apartment;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Block {
     Estate estate;

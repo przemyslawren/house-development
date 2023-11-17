@@ -1,6 +1,6 @@
-package pl.housedevelopment.person;
+package pl.edu.pja.s22687.person;
 
-import pl.housedevelopment.apartment.Estate;
+import pl.edu.pja.s22687.apartment.Estate;
 
 import java.util.ArrayList;
 

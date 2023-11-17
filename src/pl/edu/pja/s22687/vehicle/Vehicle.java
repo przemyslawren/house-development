@@ -1,4 +1,4 @@
-package pl.housedevelopment.vehicle;
+package pl.edu.pja.s22687.vehicle;
 
 abstract class Vehicle {
     private String name;

@@ -1,11 +1,10 @@
-package pl.housedevelopment;
-import pl.housedevelopment.apartment.Apartment;
-import pl.housedevelopment.apartment.Block;
-import pl.housedevelopment.apartment.ParkingSpace;
-import pl.housedevelopment.apartment.Property;
-import pl.housedevelopment.person.Address;
-import pl.housedevelopment.person.Developer;
-import pl.housedevelopment.person.Tenant;
+package pl.edu.pja.s22687;
+import pl.edu.pja.s22687.apartment.ParkingSpace;
+import pl.edu.pja.s22687.person.Address;
+import pl.edu.pja.s22687.person.Developer;
+import pl.edu.pja.s22687.apartment.Apartment;
+import pl.edu.pja.s22687.apartment.Block;
+import pl.edu.pja.s22687.person.Tenant;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -51,11 +50,16 @@ public class Main {
         parkingSpaceLinkedList.add(p4);
         parkingSpaceLinkedList.add(p5);
 
-        Tenant t1 = new Tenant("Lukas", "Kowalski", "82060369697", address, "1982-01-01");
-        Tenant t2 = new Tenant("Krzysztof", "Kowalski", "54012716468", address, "1954-07-05");
-        Tenant t3 = new Tenant("Andreas", "Muller", "80052331488", address, "1990-12-13");
-        Tenant t4 = new Tenant("Barbara", "Muller", "67112731899", address, "1967-05-08");
-        Tenant t5 = new Tenant("Max", "Muller", "99030537275", address, "1999-09-09");
+        Tenant t1 = new Tenant("Lukas", "Kowalski", "82060369697", address, "1982-01-01"); //tenant with apartment
+        Tenant t2 = new Tenant("Krzysztof", "Nowak", "54012716468", address, "1954-07-05"); //tenant with apartment
+        Tenant t3 = new Tenant("Andreas", "Muller", "80052331488", address, "1990-12-13"); //tenant with apartment
+        Tenant t4 = new Tenant("Barbara", "SchwarzMuller", "67112731899", address, "1967-05-08"); //tenant with apartment
+        Tenant t5 = new Tenant("Max", "Smith", "99030537275", address, "1999-09-09"); //tenant with apartment
+        Tenant t6 = new Tenant("a", "Kowalski", "82060369697", address, "1982-01-01"); //tenant without apartment
+        Tenant t7 = new Tenant("b", "Kowalski", "54012716468", address, "1954-07-05"); //tenant without apartment
+        Tenant t8 = new Tenant("c", "Muller", "80052331488", address, "1990-12-13"); //tenant without apartment
+        Tenant t9 = new Tenant("d", "Muller", "67112731899", address, "1967-05-08"); //tenant without apartment
+        Tenant t10 = new Tenant("e", "Muller", "99030537275", address, "1999-09-09"); //tenant without apartment
 
         ArrayList<Tenant> tenantList = new ArrayList<>();
         tenantList.add(t1);
@@ -67,10 +71,15 @@ public class Main {
         p1.addTenant(t1);
 
         a1.addTenant(t1);
-        a1.addTenant(t2);
-        a2.addTenant(t3);
-        a2.addTenant(t4);
-        a2.addTenant(t5);
+        a2.addTenant(t2);
+        a3.addTenant(t3);
+        a4.addTenant(t4);
+        a5.addTenant(t5);
+
+        Tenant chosenTenant;
+        Apartment chosenApartment;
+        ParkingSpace chosenParkingSpace;
+
         textMenu();
         String choice;
         Scanner scanner = new Scanner(System.in);
@@ -112,11 +121,11 @@ public class Main {
     }
 
     public static void textMenu() {
-        System.out.println("c: Check in a person");
         System.out.println("a: Show all the apartments");
         System.out.println("p: Show all the parking spaces");
         System.out.println("o: Show all the persons");
-        System.out.println();
+        System.out.println("t: Manage the tenants"); //todo pick a main tenant and make it possible to remove others or add new ones
+        System.out.println("s: Save the data to a file"); //todo
         System.out.println("m: Show the menu");
         System.out.println("q: Finish the program");
     }

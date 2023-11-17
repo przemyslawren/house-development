@@ -1,4 +1,4 @@
-package pl.housedevelopment.apartment;
+package pl.edu.pja.s22687.apartment;
 
 public class Item {
     String name;

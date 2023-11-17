@@ -1,4 +1,4 @@
-package pl.housedevelopment.person;
+package pl.edu.pja.s22687.person;
 
 public class Person {
     private String name;

@@ -1,4 +1,4 @@
-package pl.housedevelopment.vehicle;
+package pl.edu.pja.s22687.vehicle;
 
 public class OffroadVehicle extends Vehicle {
     private double loadCapacity;

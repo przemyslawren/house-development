@@ -1,10 +1,8 @@
-package pl.housedevelopment.apartment;
+package pl.edu.pja.s22687.apartment;
 
-import pl.housedevelopment.person.Developer;
+import pl.edu.pja.s22687.person.Developer;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Estate {
     Developer developer;
