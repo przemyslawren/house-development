@@ -39,9 +39,9 @@ public class Main {
         apartmentLinkedList.add(a5);
 
         ParkingSpace p1 = new ParkingSpace(30);
-        ParkingSpace p2 = new ParkingSpace(30);
-        ParkingSpace p3 = new ParkingSpace(30);
-        ParkingSpace p4 = new ParkingSpace(30);
+        ParkingSpace p2 = new ParkingSpace(50);
+        ParkingSpace p3 = new ParkingSpace(70);
+        ParkingSpace p4 = new ParkingSpace(40);
         ParkingSpace p5 = new ParkingSpace(5,3,2);
 
         LinkedList<ParkingSpace> parkingSpaceLinkedList = new LinkedList<>();
@@ -63,6 +63,8 @@ public class Main {
         tenantList.add(t3);
         tenantList.add(t4);
         tenantList.add(t5);
+
+        p1.addTenant(t1);
 
         a1.addTenant(t1);
         a1.addTenant(t2);
@@ -114,6 +116,7 @@ public class Main {
         System.out.println("a: Show all the apartments");
         System.out.println("p: Show all the parking spaces");
         System.out.println("o: Show all the persons");
+        System.out.println();
         System.out.println("m: Show the menu");
         System.out.println("q: Finish the program");
     }

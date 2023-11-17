@@ -3,8 +3,11 @@ package pl.housedevelopment.apartment;
 import pl.housedevelopment.interfaces.TenantAction;
 import pl.housedevelopment.person.Tenant;
 
+import java.util.List;
+
 public class ParkingSpace extends Property implements TenantAction {
     private Tenant mainTenant;
+    private List<Tenant> items;
     public ParkingSpace(double area) {
         super(area);
     }
@@ -23,7 +26,15 @@ public class ParkingSpace extends Property implements TenantAction {
     }
 
     public String toString() {
-        return "\nParking space: " + mainTenant +
-                ", " + area;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Parking Space ID: ").append(id).append("\n");
+        sb.append("Area: ").append(String.format("%.2f", area)).append(" sqm\n");
+        if (mainTenant == null) {
+            sb.append(" - No tenants\n");
+        } else {
+            sb.append(" - Main Tenant").append("\n");
+            sb.append("   Full Name: ").append(mainTenant.getName()).append(" ").append(mainTenant.getSurname()).append("\n");
+        }
+        return sb.toString();
     }
 }

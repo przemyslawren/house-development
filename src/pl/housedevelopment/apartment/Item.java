@@ -8,4 +8,8 @@ public class Item {
         this.name = name;
         this.area = area;
     }
+
+    public String toString() {
+        return "Item{" + "name='" + name + '\'' + ", area=" + area + '}';
+    }
 }
