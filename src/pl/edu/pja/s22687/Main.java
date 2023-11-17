@@ -5,6 +5,9 @@ import pl.edu.pja.s22687.person.Developer;
 import pl.edu.pja.s22687.apartment.Apartment;
 import pl.edu.pja.s22687.apartment.Block;
 import pl.edu.pja.s22687.person.Tenant;
+import pl.edu.pja.s22687.utilities.ChangeDate;
+import pl.edu.pja.s22687.utilities.SharedDate;
+import pl.edu.pja.s22687.utilities.checkRent;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -16,7 +19,12 @@ public class Main {
         mainMenu();
     }
     public static void startClock() {
+        SharedDate sharedDate = new SharedDate();
+        Thread dateThread = new Thread(new ChangeDate(sharedDate));
+        Thread rentThread = new Thread(new checkRent(sharedDate));
 
+        dateThread.start();
+        rentThread.start();
     }
 
     public static void mainMenu() {
