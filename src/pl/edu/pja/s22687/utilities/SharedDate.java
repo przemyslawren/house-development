@@ -3,10 +3,17 @@ package pl.edu.pja.s22687.utilities;
 import java.time.LocalDate;
 
 public class SharedDate {
+    private static SharedDate INSTANCE = null;
     private LocalDate date;
 
     public SharedDate() {
         this.date = LocalDate.now();
+    }
+    public static SharedDate getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new SharedDate();
+        }
+        return INSTANCE;
     }
 
     public synchronized void advanceDay() {

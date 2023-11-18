@@ -1,5 +1,6 @@
 package pl.edu.pja.s22687;
 import pl.edu.pja.s22687.apartment.ParkingSpace;
+import pl.edu.pja.s22687.exceptions.ProblematicTenantException;
 import pl.edu.pja.s22687.person.Address;
 import pl.edu.pja.s22687.person.Developer;
 import pl.edu.pja.s22687.apartment.Apartment;
@@ -7,27 +8,27 @@ import pl.edu.pja.s22687.apartment.Block;
 import pl.edu.pja.s22687.person.Tenant;
 import pl.edu.pja.s22687.utilities.ChangeDate;
 import pl.edu.pja.s22687.utilities.SharedDate;
-import pl.edu.pja.s22687.utilities.checkRent;
+import pl.edu.pja.s22687.utilities.CheckRent;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ProblematicTenantException {
         startClock();
         mainMenu();
     }
     public static void startClock() {
         SharedDate sharedDate = new SharedDate();
         Thread dateThread = new Thread(new ChangeDate(sharedDate));
-        Thread rentThread = new Thread(new checkRent(sharedDate));
+        Thread rentThread = new Thread(new CheckRent(sharedDate));
 
         dateThread.start();
         rentThread.start();
     }
 
-    public static void mainMenu() {
+    public static void mainMenu() throws ProblematicTenantException {
         Developer developer = Developer.getInstance();
         LinkedList<Block> blockLinkedList = new LinkedList<>();
         Address address = new Address("Redutowa", "130", "01-106", "Warsaw");
@@ -76,13 +77,11 @@ public class Main {
         tenantList.add(t4);
         tenantList.add(t5);
 
-        p1.addTenant(t1);
-
-        a1.addTenant(t1);
-        a2.addTenant(t2);
-        a3.addTenant(t3);
-        a4.addTenant(t4);
-        a5.addTenant(t5);
+        t1.rent(a1,1);
+        t2.rent(a2,2);
+        t3.rent(a3,3);
+        t4.rent(a4,4);
+        t5.rent(a5,5);
 
         Tenant chosenTenant;
         Apartment chosenApartment;

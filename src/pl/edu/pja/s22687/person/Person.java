@@ -6,7 +6,6 @@ public class Person {
     final protected String personalId;
     private Address address;
     private String dateOfBirth;
-
     public Person(String name, String surname, String personalId, Address address, String dateOfBirth) {
         this.name = name;
         this.surname = surname;

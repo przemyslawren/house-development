@@ -1,4 +1,5 @@
 package pl.edu.pja.s22687.apartment;
+import pl.edu.pja.s22687.Rent;
 import pl.edu.pja.s22687.interfaces.TenantAction;
 import pl.edu.pja.s22687.person.Tenant;
 
@@ -11,8 +12,7 @@ public class Apartment extends Property implements TenantAction {
     private Tenant mainTenant;
     ParkingSpace parkingSpace;
     private List<Tenant> tenants;
-    private LocalDate startRent;
-    private LocalDate endRent;
+
 
     public Apartment(double area) {
         super(area);
@@ -33,6 +33,8 @@ public class Apartment extends Property implements TenantAction {
             this.tenants.add(tenant);
         }
     }
+
+
 
     public String toString() {
         StringBuilder sb = new StringBuilder();

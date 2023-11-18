@@ -1,9 +1,9 @@
 package pl.edu.pja.s22687.utilities;
 
-public class checkRent implements Runnable {
+public class CheckRent implements Runnable {
     private final SharedDate sharedDate;
 
-    public checkRent(SharedDate sharedDate) {
+    public CheckRent(SharedDate sharedDate) {
         this.sharedDate = sharedDate;
     }
     @Override

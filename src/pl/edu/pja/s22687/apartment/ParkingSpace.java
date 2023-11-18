@@ -3,6 +3,7 @@ package pl.edu.pja.s22687.apartment;
 import pl.edu.pja.s22687.interfaces.TenantAction;
 import pl.edu.pja.s22687.person.Tenant;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class ParkingSpace extends Property implements TenantAction {
@@ -15,6 +16,7 @@ public class ParkingSpace extends Property implements TenantAction {
     public ParkingSpace(double length, double width, double height) {
         super(length * width * height);
     }
+
 
     public void addTenant(Tenant tenant) {
         if (this.mainTenant == null) {
