@@ -7,31 +7,32 @@ import pl.edu.pja.s22687.person.Developer;
 import pl.edu.pja.s22687.apartment.Apartment;
 import pl.edu.pja.s22687.apartment.Block;
 import pl.edu.pja.s22687.person.Tenant;
-import pl.edu.pja.s22687.utilities.ChangeDate;
+import pl.edu.pja.s22687.utilities.DateAndRentManager;
 import pl.edu.pja.s22687.utilities.SharedDate;
-import pl.edu.pja.s22687.utilities.CheckRent;
+import pl.edu.pja.s22687.utilities.TenantManager;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws ProblematicTenantException {
-        startClock();
+        startClock(TenantManager.getAllTenants());
         mainMenu();
     }
-    public static void startClock() {
+    public static void startClock(List<Tenant> allTenants) {
         SharedDate sharedDate = SharedDate.getInstance();
-        Thread dateThread = new Thread(new ChangeDate(sharedDate));
-        Thread rentThread = new Thread(new CheckRent(sharedDate));
+        Thread managerThread = new Thread(new DateAndRentManager(sharedDate, allTenants));
 
-        dateThread.start();
-        rentThread.start();
+        managerThread.start();
     }
 
     public static void mainMenu() throws ProblematicTenantException {
         Developer developer = Developer.getInstance();
+        TenantManager tenantManager = new TenantManager();
         LinkedList<Block> blockLinkedList = new LinkedList<>();
         File storedData = new File("data.txt");
         Address address = new Address("Redutowa", "130", "01-106", "Warsaw");
@@ -73,12 +74,11 @@ public class Main {
         Tenant t9 = new Tenant("d", "Muller", "67112731899", address, "1967-05-08"); //tenant without apartment
         Tenant t10 = new Tenant("e", "Muller", "99030537275", address, "1999-09-09"); //tenant without apartment
 
-        ArrayList<Tenant> tenantList = new ArrayList<>();
-        tenantList.add(t1);
-        tenantList.add(t2);
-        tenantList.add(t3);
-        tenantList.add(t4);
-        tenantList.add(t5);
+        tenantManager.addTenant(t1);
+        tenantManager.addTenant(t2);
+        tenantManager.addTenant(t3);
+        tenantManager.addTenant(t4);
+        tenantManager.addTenant(t5);
 
         t1.rent(a1,1);
         t2.rent(a2,2);
@@ -113,7 +113,7 @@ public class Main {
                     break;
                 case "o":
                     System.out.println("Show all the persons");
-                        for (Tenant tenant : tenantList) {
+                        for (Tenant tenant : tenantManager.getAllTenants()) {
                             System.out.println(tenant);
                         }
                         seeMenu();

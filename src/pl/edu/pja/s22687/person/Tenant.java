@@ -9,6 +9,7 @@ import pl.edu.pja.s22687.exceptions.ProblematicTenantException;
 import pl.edu.pja.s22687.interfaces.IRent;
 import pl.edu.pja.s22687.utilities.SharedDate;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,6 +77,21 @@ public class Tenant extends Person implements IRent {
 
     public void setWantToRentParking(boolean doRentParking) {
         this.doRentParking = doRentParking;
+    }
+
+    public void checkRentStatus() {
+        LocalDate currentDate = SharedDate.getInstance().getDate();
+        for (Property property : properties) {
+            if (property.getEndRent().isBefore(currentDate)) {
+                // Rent is expired
+                property.setRentStatus(Rent.RentStatus.EXPIRED);
+                System.out.println("Rent expired for " + property);
+            } else {
+                // Rent is still valid
+                property.setRentStatus(Rent.RentStatus.VALID);
+                System.out.println("Rent is still valid for " + property);
+            }
+        }
     }
 
     public String toString() {

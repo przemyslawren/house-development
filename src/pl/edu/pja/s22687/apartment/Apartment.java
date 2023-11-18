@@ -32,8 +32,6 @@ public class Apartment extends Property implements ITenant {
         }
     }
 
-
-
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Apartment ID: ").append(id).append("\n");

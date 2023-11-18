@@ -57,4 +57,7 @@ public class Property {
         return "Property{" + "id=" + id + ", area=" + area + '}';
     }
 
+    public boolean getRentStatus() {
+        return false;
+    }
 }
