@@ -11,6 +11,7 @@ import pl.edu.pja.s22687.utilities.ChangeDate;
 import pl.edu.pja.s22687.utilities.SharedDate;
 import pl.edu.pja.s22687.utilities.CheckRent;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -21,7 +22,7 @@ public class Main {
         mainMenu();
     }
     public static void startClock() {
-        SharedDate sharedDate = new SharedDate();
+        SharedDate sharedDate = SharedDate.getInstance();
         Thread dateThread = new Thread(new ChangeDate(sharedDate));
         Thread rentThread = new Thread(new CheckRent(sharedDate));
 
@@ -32,6 +33,7 @@ public class Main {
     public static void mainMenu() throws ProblematicTenantException {
         Developer developer = Developer.getInstance();
         LinkedList<Block> blockLinkedList = new LinkedList<>();
+        File storedData = new File("data.txt");
         Address address = new Address("Redutowa", "130", "01-106", "Warsaw");
 
         Apartment a1 = new Apartment(152.30);
@@ -88,9 +90,6 @@ public class Main {
         Block block = new Block(apartmentLinkedList, parkingSpaceLinkedList, estate);
         blockLinkedList.add(block);
 
-            Tenant chosenTenant;
-            Apartment chosenApartment;
-            ParkingSpace chosenParkingSpace;
 
         textMenu();
         String choice;
@@ -118,6 +117,9 @@ public class Main {
                             System.out.println(tenant);
                         }
                         seeMenu();
+                    break;
+                case "s":
+                    System.out.println("Save the data to a file");
                     break;
                 case "m":
                     textMenu();

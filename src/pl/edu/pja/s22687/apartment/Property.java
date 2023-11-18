@@ -56,4 +56,5 @@ public class Property {
     public String toString() {
         return "Property{" + "id=" + id + ", area=" + area + '}';
     }
+
 }

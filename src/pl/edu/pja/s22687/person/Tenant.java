@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Tenant extends Person implements IRent {
     private boolean isMainTenant;
-    List<Property> properties;
+    ArrayList<Property> properties;
     List<TenantLetter> tenantLetters;
     boolean doRentParking = false;
 
@@ -34,7 +34,7 @@ public class Tenant extends Person implements IRent {
     }
 
     public void rent(Apartment apartment, int days) throws ProblematicTenantException {
-        if (tenantLetters.size() <= 3  ) { //add for rents more than 5 per tenant
+        if (tenantLetters.size() <= 3 || getListOfProperties().size() > 5) { //add for rents more than 5 per tenant
             if (this.isMainTenant) {
                 apartment.addTenant(this);
                 apartment.setStartRent(SharedDate.getInstance().getDate());
@@ -52,17 +52,30 @@ public class Tenant extends Person implements IRent {
     }
 
     public void rent(ParkingSpace parkingSpace, int days) throws ProblematicTenantException {
-        if (tenantLetters.size() > 3  ) { //add for rents more than 5 per tenant
+        if (tenantLetters.size() > 3 || getListOfProperties().size() > 5) { //add for rents more than 5 per tenant
             if (this.isMainTenant) {
                 parkingSpace.addTenant(this);
                 parkingSpace.setStartRent(SharedDate.getInstance().getDate());
                 parkingSpace.setEndRent(SharedDate.getInstance().getDate().plusDays(days));
                 Rent.addToListOfRents(parkingSpace);
+                properties.add(parkingSpace);
             } else {
                 System.out.println("You are not main tenant");
             }
-        } else throw new ProblematicTenantException("Tenant has not paid the rent");
+        } else throw new ProblematicTenantException("Tenant" + this + "has already rented 5 properties" + this.getListOfProperties());
 
+    }
+
+    public ArrayList<Property> getListOfProperties() {
+        return properties;
+    }
+
+    public boolean isWantToRentParking() {
+        return doRentParking;
+    }
+
+    public void setWantToRentParking(boolean doRentParking) {
+        this.doRentParking = doRentParking;
     }
 
     public String toString() {
