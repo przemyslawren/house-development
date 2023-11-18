@@ -1,4 +1,5 @@
 package pl.edu.pja.s22687;
+import pl.edu.pja.s22687.apartment.Estate;
 import pl.edu.pja.s22687.apartment.ParkingSpace;
 import pl.edu.pja.s22687.exceptions.ProblematicTenantException;
 import pl.edu.pja.s22687.person.Address;
@@ -83,9 +84,13 @@ public class Main {
         t4.rent(a4,4);
         t5.rent(a5,5);
 
-        Tenant chosenTenant;
-        Apartment chosenApartment;
-        ParkingSpace chosenParkingSpace;
+        Estate estate = new Estate(developer, blockLinkedList);
+        Block block = new Block(apartmentLinkedList, parkingSpaceLinkedList, estate);
+        blockLinkedList.add(block);
+
+            Tenant chosenTenant;
+            Apartment chosenApartment;
+            ParkingSpace chosenParkingSpace;
 
         textMenu();
         String choice;

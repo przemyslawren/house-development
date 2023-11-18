@@ -1,13 +1,11 @@
 package pl.edu.pja.s22687.apartment;
-import pl.edu.pja.s22687.Rent;
-import pl.edu.pja.s22687.interfaces.TenantAction;
+import pl.edu.pja.s22687.interfaces.ITenant;
 import pl.edu.pja.s22687.person.Tenant;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Apartment extends Property implements TenantAction {
+public class Apartment extends Property implements ITenant {
 
     private Tenant mainTenant;
     ParkingSpace parkingSpace;

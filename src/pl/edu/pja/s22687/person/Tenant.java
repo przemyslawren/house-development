@@ -6,14 +6,13 @@ import pl.edu.pja.s22687.apartment.Apartment;
 import pl.edu.pja.s22687.apartment.ParkingSpace;
 import pl.edu.pja.s22687.apartment.Property;
 import pl.edu.pja.s22687.exceptions.ProblematicTenantException;
-import pl.edu.pja.s22687.interfaces.RentAction;
-import pl.edu.pja.s22687.utilities.ChangeDate;
+import pl.edu.pja.s22687.interfaces.IRent;
 import pl.edu.pja.s22687.utilities.SharedDate;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tenant extends Person implements RentAction {
+public class Tenant extends Person implements IRent {
     private boolean isMainTenant;
     List<Property> properties;
     List<TenantLetter> tenantLetters;
