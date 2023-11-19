@@ -14,7 +14,6 @@ import pl.edu.pja.s22687.vehicle.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
 import java.util.*;
 
 public class Main {
@@ -146,12 +145,6 @@ public class Main {
                         }
                         seeMenu();
                     break;
-                case "i":
-                    System.out.println("Insert a new item to the parking space");
-                    System.out.println("Enter the ID of the parking space");
-
-                        System.out.println("Item added");
-                        seeMenu();
                 case "s":
                     System.out.println("Save the data to a file");
                     List<Tenant> tenants = TenantManager.getAllTenants();
@@ -175,7 +168,6 @@ public class Main {
         System.out.println("a: Show all the apartments");
         System.out.println("p: Show all the parking spaces");
         System.out.println("o: Show all the persons");
-        System.out.println("i: Insert a new item to the parking space");
         System.out.println("s: Save the data to a file");
         System.out.println("m: Show the menu");
         System.out.println("q: Finish the program");
