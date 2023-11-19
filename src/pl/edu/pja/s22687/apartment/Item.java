@@ -12,4 +12,13 @@ public class Item {
     public String toString() {
         return "Item{" + "name='" + name + '\'' + ", area=" + area + '}';
     }
+
+    public double getArea() {
+        return area;
+    }
+
+    public String getName() {
+        return name;
+    }
+
 }

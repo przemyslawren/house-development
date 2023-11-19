@@ -1,19 +1,25 @@
 package pl.edu.pja.s22687.apartment;
 
+import pl.edu.pja.s22687.exceptions.TooManyThingsException;
 import pl.edu.pja.s22687.interfaces.ITenant;
 import pl.edu.pja.s22687.person.Tenant;
+import pl.edu.pja.s22687.vehicle.Vehicle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingSpace extends Property implements ITenant {
     private Tenant mainTenant;
-    private List<Tenant> items;
+    private List<Item> items;
+
     public ParkingSpace(double area) {
         super(area);
+        items = new ArrayList<>();
     }
 
     public ParkingSpace(double length, double width, double height) {
         super(length * width * height);
+        items = new ArrayList<>();
     }
 
 
@@ -26,10 +32,23 @@ public class ParkingSpace extends Property implements ITenant {
         }
     }
 
+    public void addItem(Item item) throws TooManyThingsException {
+        double newArea = area - item.getArea();
+        if (newArea < 0) {
+            throw new TooManyThingsException("Not enough space for " + item.getName() + " in parking space " + this);
+        }
+        items.add(item);
+        area = newArea;
+    }
+
+    public ParkingSpace findParkingSpaceById(int id) {
+        return this;
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Parking Space ID: ").append(id).append("\n");
-        sb.append("Area: ").append(String.format("%.2f", area)).append(" sqm\n");
+        sb.append("Area left: ").append(String.format("%.2f", area)).append(" sqm\n");
         if (mainTenant == null) {
             sb.append(" - No tenants\n");
         } else {

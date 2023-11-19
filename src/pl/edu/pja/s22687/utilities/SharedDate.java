@@ -23,7 +23,7 @@ public class SharedDate {
 
     public synchronized void advanceDay() {
         this.date = this.date.plusDays(1);
-        System.out.println("Date advanced to " + this.date + "\n");
+        System.out.println("Date advanced to " + this.date);
     }
 
     public synchronized LocalDate getDate() {

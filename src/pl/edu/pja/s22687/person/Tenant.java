@@ -35,26 +35,31 @@ public class Tenant extends Person implements IRent {
     }
 
     public void rent(Apartment apartment, int days) throws ProblematicTenantException {
-        if (tenantLetters.size() <= 3 || getListOfProperties().size() < 5) { //add for rents more than 5 per tenant
-            if (this.isMainTenant) {
-                apartment.addTenant(this);
-                apartment.setStartRent(SharedDate.getInstance().getDate());
-                apartment.setEndRent(SharedDate.getInstance().getDate().plusDays(days));
-                apartment.setRentStatus(Rent.RentStatus.VALID);
-                properties.add(apartment);
-                if (doRentParking) {
-                    rent(new ParkingSpace(30), 30);
-                }
-            } else {
-                System.out.println("You are not main tenant");
-            }
-        } else throw new ProblematicTenantException("Tenant " + this + " has already rented 5 properties " + this.getListOfProperties());
-
+        if (tenantLetters.size() > 3) {
+            throw new ProblematicTenantException("Tenant " + this + " has too many unresolved issues: " + tenantLetters);
+        }
+        if (properties.size() >= 5) {
+            throw new ProblematicTenantException("Tenant " + this + " has already rented 5 properties " + this.getListOfProperties());
+        }
+        if (this.isMainTenant) {
+            apartment.addTenant(this);
+            apartment.setStartRent(SharedDate.getInstance().getDate());
+            apartment.setEndRent(SharedDate.getInstance().getDate().plusDays(days));
+            Rent.addToListOfRents(apartment);
+            properties.add(apartment);
+        } else {
+            System.out.println("You are not main tenant");
+        }
     }
 
     public void rent(ParkingSpace parkingSpace, int days) throws ProblematicTenantException {
-        if (getListOfProperties().size() < 5) {
-            if (this.isMainTenant) {
+        if (tenantLetters.size() > 3) {
+            throw new ProblematicTenantException("Tenant " + this + " has too many unresolved issues: " + tenantLetters);
+        }
+        if (properties.size() >= 5) {
+            throw new ProblematicTenantException("Tenant " + this + " has already rented 5 properties " + this.getListOfProperties());
+        }
+        if (this.isMainTenant) {
                 parkingSpace.addTenant(this);
                 parkingSpace.setStartRent(SharedDate.getInstance().getDate());
                 parkingSpace.setEndRent(SharedDate.getInstance().getDate().plusDays(days));
@@ -62,9 +67,7 @@ public class Tenant extends Person implements IRent {
                 properties.add(parkingSpace);
             } else {
                 System.out.println("You are not main tenant");
-            }
-        } else throw new ProblematicTenantException("Tenant " + this + " has already rented 5 properties " + this.getListOfProperties());
-
+        }
     }
 
     public ArrayList<Property> getListOfProperties() {
@@ -93,15 +96,6 @@ public class Tenant extends Person implements IRent {
                 System.out.println("Rent is still valid for " + property);
             }
         }
-    }
-
-    public boolean areAllRentsExpired() {
-        for (Property property : properties) {
-            if (property.getRentStatus()) { // If rent is active for any property
-                return false; // Not all rents are expired
-            }
-        }
-        return true; // All rents are expired
     }
 
     public List<TenantLetter> getListOfTenantLetters() {

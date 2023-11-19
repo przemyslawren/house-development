@@ -1,37 +1,34 @@
 package pl.edu.pja.s22687;
-import pl.edu.pja.s22687.apartment.Estate;
-import pl.edu.pja.s22687.apartment.ParkingSpace;
+import pl.edu.pja.s22687.apartment.*;
 import pl.edu.pja.s22687.exceptions.ProblematicTenantException;
+import pl.edu.pja.s22687.exceptions.TooManyThingsException;
 import pl.edu.pja.s22687.person.Address;
 import pl.edu.pja.s22687.person.Developer;
-import pl.edu.pja.s22687.apartment.Apartment;
-import pl.edu.pja.s22687.apartment.Block;
 import pl.edu.pja.s22687.person.Tenant;
 import pl.edu.pja.s22687.utilities.DateAndRentManager;
 import pl.edu.pja.s22687.utilities.ParkingSpaceManager;
 import pl.edu.pja.s22687.utilities.SharedDate;
 import pl.edu.pja.s22687.utilities.TenantManager;
+import pl.edu.pja.s22687.vehicle.*;
 
 import java.io.File;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws ProblematicTenantException {
+    private static DateAndRentManager dateAndRentManager;
+    public static void main(String[] args) throws ProblematicTenantException, TooManyThingsException {
         startClock(TenantManager.getAllTenants());
         mainMenu();
     }
     public static void startClock(List<Tenant> allTenants) {
         SharedDate sharedDate = SharedDate.getInstance();
-        Thread managerThread = new Thread(new DateAndRentManager(sharedDate, allTenants));
-
+        dateAndRentManager = new DateAndRentManager(sharedDate, allTenants);
+        Thread managerThread = new Thread(dateAndRentManager);
         managerThread.start();
     }
 
-    public static void mainMenu() throws ProblematicTenantException {
+    public static void mainMenu() throws ProblematicTenantException, TooManyThingsException {
         Developer developer = Developer.getInstance();
         TenantManager tenantManager = new TenantManager();
         ParkingSpaceManager parkingSpaceManager = new ParkingSpaceManager();
@@ -63,6 +60,23 @@ public class Main {
         parkingSpaceManager.addParkingSpace(p3);
         parkingSpaceManager.addParkingSpace(p4);
         parkingSpaceManager.addParkingSpace(p5);
+
+        CityVehicle c1 = new CityVehicle("BMW", 10, VehicleType.CITY, EngineType.DIESEL, 200, 2.0,5);
+        MotorcycleVehicle m1 = new MotorcycleVehicle("Yamaha", 5, VehicleType.MOTORCYCLE, EngineType.PETROL, 150, 1.0, 300);
+        CityVehicle c2 = new CityVehicle("Audi", 15, VehicleType.CITY, EngineType.ELECTRIC, 300, 3.0, 4);
+        MotorcycleVehicle m2 = new MotorcycleVehicle("Honda", 7, VehicleType.MOTORCYCLE, EngineType.HYBRID, 250, 1.5, 250);
+        CityVehicle c3 = new CityVehicle("Mercedes", 20, VehicleType.CITY, EngineType.DIESEL, 400, 4.0, 3);
+
+        Item i1 = new Item("Bike", 2);
+
+        p1.addItem(c1);
+        p1.addItem(m1);
+        p2.addItem(c2);
+        p3.addItem(m2);
+        p4.addItem(c3);
+
+        p1.addItem(i1);
+
 
         Tenant t1 = new Tenant("Lukas", "Kowalski", "82060369697", address, "1982-01-01"); //tenant with apartment
         Tenant t2 = new Tenant("Krzysztof", "Nowak", "54012716468", address, "1954-07-05"); //tenant with apartment
@@ -98,6 +112,12 @@ public class Main {
         do {
             choice = scanner.nextLine();
             switch (choice) {
+                case "c":
+                    if (dateAndRentManager != null) {
+                        dateAndRentManager.toggleRentChecking();
+                    }
+                    break;
+
                 case "a":
                     System.out.println("Show all the apartments");
                         for (Apartment apartment : apartmentLinkedList) {
@@ -119,6 +139,12 @@ public class Main {
                         }
                         seeMenu();
                     break;
+                case "i":
+                    System.out.println("Insert a new item to the parking space");
+                    System.out.println("Enter the ID of the parking space");
+
+                        System.out.println("Item added");
+                        seeMenu();
                 case "s":
                     System.out.println("Save the data to a file");
                     break;
@@ -136,11 +162,12 @@ public class Main {
     }
 
     public static void textMenu() {
+        System.out.println("c: Check rents ON/OFF");
         System.out.println("a: Show all the apartments");
         System.out.println("p: Show all the parking spaces");
         System.out.println("o: Show all the persons");
-        System.out.println("t: Manage the tenants"); //todo pick a main tenant and make it possible to remove others or add new ones
-        System.out.println("s: Save the data to a file"); //todo
+        System.out.println("i: Insert a new item to the parking space");
+        System.out.println("s: Save the data to a file");
         System.out.println("m: Show the menu");
         System.out.println("q: Finish the program");
     }

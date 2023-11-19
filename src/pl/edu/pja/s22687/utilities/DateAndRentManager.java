@@ -8,6 +8,7 @@ public class DateAndRentManager implements Runnable {
     private final SharedDate sharedDate;
     private int dateCounter = 0;
     private int rentCounter = 0;
+    private boolean checkRents = true;
 
     public DateAndRentManager(SharedDate sharedDate, List<Tenant> allTenants) {
         this.sharedDate = sharedDate;
@@ -26,7 +27,7 @@ public class DateAndRentManager implements Runnable {
                     dateCounter = 0; // Reset counter
                 }
 
-                if (rentCounter >= 10000) {
+                if (rentCounter >= 10000 && checkRents) {
                         System.out.println("Checking rents for " + this.sharedDate.getDate() + "\n");
                         checkRent();
 
@@ -41,5 +42,10 @@ public class DateAndRentManager implements Runnable {
         for (Tenant tenant : TenantManager.getAllTenants()) {
            tenant.checkRentStatus();
         }
+    }
+
+    public void toggleRentChecking() {
+        this.checkRents = !this.checkRents;
+        System.out.println("Rent checking is now " + (this.checkRents ? "enabled" : "disabled"));
     }
 }
