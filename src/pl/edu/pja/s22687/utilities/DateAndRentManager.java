@@ -1,4 +1,5 @@
 package pl.edu.pja.s22687.utilities;
+import pl.edu.pja.s22687.exceptions.ProblematicTenantException;
 import pl.edu.pja.s22687.person.Tenant;
 
 import java.util.List;
@@ -26,9 +27,9 @@ public class DateAndRentManager implements Runnable {
                 }
 
                 if (rentCounter >= 10000) {
-                    // Add your logic to check rent here
-                    checkRent();
-                    System.out.println("Checking rent for " + this.sharedDate.getDate());
+                        System.out.println("Checking rents for " + this.sharedDate.getDate() + "\n");
+                        checkRent();
+
                     rentCounter = 0; // Reset counter
                 }
             }

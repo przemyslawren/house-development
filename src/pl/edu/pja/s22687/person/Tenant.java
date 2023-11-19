@@ -35,7 +35,7 @@ public class Tenant extends Person implements IRent {
     }
 
     public void rent(Apartment apartment, int days) throws ProblematicTenantException {
-        if (tenantLetters.size() <= 3 || getListOfProperties().size() > 5) { //add for rents more than 5 per tenant
+        if (tenantLetters.size() <= 3 || getListOfProperties().size() < 5) { //add for rents more than 5 per tenant
             if (this.isMainTenant) {
                 apartment.addTenant(this);
                 apartment.setStartRent(SharedDate.getInstance().getDate());
@@ -48,12 +48,12 @@ public class Tenant extends Person implements IRent {
             } else {
                 System.out.println("You are not main tenant");
             }
-        } else throw new ProblematicTenantException("Tenant has not paid the rent");
+        } else throw new ProblematicTenantException("Tenant " + this + " has already rented 5 properties " + this.getListOfProperties());
 
     }
 
     public void rent(ParkingSpace parkingSpace, int days) throws ProblematicTenantException {
-        if (tenantLetters.size() > 3 || getListOfProperties().size() > 5) { //add for rents more than 5 per tenant
+        if (getListOfProperties().size() < 5) {
             if (this.isMainTenant) {
                 parkingSpace.addTenant(this);
                 parkingSpace.setStartRent(SharedDate.getInstance().getDate());
@@ -63,12 +63,12 @@ public class Tenant extends Person implements IRent {
             } else {
                 System.out.println("You are not main tenant");
             }
-        } else throw new ProblematicTenantException("Tenant" + this + "has already rented 5 properties" + this.getListOfProperties());
+        } else throw new ProblematicTenantException("Tenant " + this + " has already rented 5 properties " + this.getListOfProperties());
 
     }
 
     public ArrayList<Property> getListOfProperties() {
-        return properties;
+        return this.properties;
     }
 
     public boolean isWantToRentParking() {
@@ -85,6 +85,7 @@ public class Tenant extends Person implements IRent {
             if (property.getEndRent().isBefore(currentDate)) {
                 // Rent is expired
                 property.setRentStatus(Rent.RentStatus.EXPIRED);
+                this.tenantLetters.add(new TenantLetter(this));
                 System.out.println("Rent expired for " + property);
             } else {
                 // Rent is still valid
@@ -92,6 +93,19 @@ public class Tenant extends Person implements IRent {
                 System.out.println("Rent is still valid for " + property);
             }
         }
+    }
+
+    public boolean areAllRentsExpired() {
+        for (Property property : properties) {
+            if (property.getRentStatus()) { // If rent is active for any property
+                return false; // Not all rents are expired
+            }
+        }
+        return true; // All rents are expired
+    }
+
+    public List<TenantLetter> getListOfTenantLetters() {
+        return tenantLetters;
     }
 
     public String toString() {
@@ -105,7 +119,9 @@ public class Tenant extends Person implements IRent {
         }
         sb.append("   PersonalID: ").append(getPersonalId()).append("\n");
         sb.append("   Address: ").append(getAddress()).append("\n");
-        sb.append("   Date of Birth: ").append(getDateOfBirth()).append("\n\n");
+        sb.append("   Date of Birth: ").append(getDateOfBirth()).append("\n");
+        sb.append("   Properties: ").append(getListOfProperties().size()).append("\n");
+        sb.append("   Tenant Letters: ").append(getListOfTenantLetters()).append("\n\n");
         return sb.toString();
     }
 }

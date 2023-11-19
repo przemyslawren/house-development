@@ -58,6 +58,10 @@ public class Property {
     }
 
     public boolean getRentStatus() {
+        LocalDate currentDate = LocalDate.now();
+        if (endRent != null) {
+            return currentDate.isBefore(endRent) || currentDate.isEqual(endRent);
+        }
         return false;
     }
 }

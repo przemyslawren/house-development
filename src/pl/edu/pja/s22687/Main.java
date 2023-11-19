@@ -8,6 +8,7 @@ import pl.edu.pja.s22687.apartment.Apartment;
 import pl.edu.pja.s22687.apartment.Block;
 import pl.edu.pja.s22687.person.Tenant;
 import pl.edu.pja.s22687.utilities.DateAndRentManager;
+import pl.edu.pja.s22687.utilities.ParkingSpaceManager;
 import pl.edu.pja.s22687.utilities.SharedDate;
 import pl.edu.pja.s22687.utilities.TenantManager;
 
@@ -33,6 +34,7 @@ public class Main {
     public static void mainMenu() throws ProblematicTenantException {
         Developer developer = Developer.getInstance();
         TenantManager tenantManager = new TenantManager();
+        ParkingSpaceManager parkingSpaceManager = new ParkingSpaceManager();
         LinkedList<Block> blockLinkedList = new LinkedList<>();
         File storedData = new File("data.txt");
         Address address = new Address("Redutowa", "130", "01-106", "Warsaw");
@@ -56,12 +58,11 @@ public class Main {
         ParkingSpace p4 = new ParkingSpace(40);
         ParkingSpace p5 = new ParkingSpace(5,3,2);
 
-        LinkedList<ParkingSpace> parkingSpaceLinkedList = new LinkedList<>();
-        parkingSpaceLinkedList.add(p1);
-        parkingSpaceLinkedList.add(p2);
-        parkingSpaceLinkedList.add(p3);
-        parkingSpaceLinkedList.add(p4);
-        parkingSpaceLinkedList.add(p5);
+        parkingSpaceManager.addParkingSpace(p1);
+        parkingSpaceManager.addParkingSpace(p2);
+        parkingSpaceManager.addParkingSpace(p3);
+        parkingSpaceManager.addParkingSpace(p4);
+        parkingSpaceManager.addParkingSpace(p5);
 
         Tenant t1 = new Tenant("Lukas", "Kowalski", "82060369697", address, "1982-01-01"); //tenant with apartment
         Tenant t2 = new Tenant("Krzysztof", "Nowak", "54012716468", address, "1954-07-05"); //tenant with apartment
@@ -81,13 +82,13 @@ public class Main {
         tenantManager.addTenant(t5);
 
         t1.rent(a1,1);
-        t2.rent(a2,2);
+        t1.rent(a2,2);
         t3.rent(a3,3);
         t4.rent(a4,4);
         t5.rent(a5,5);
 
         Estate estate = new Estate(developer, blockLinkedList);
-        Block block = new Block(apartmentLinkedList, parkingSpaceLinkedList, estate);
+        Block block = new Block(apartmentLinkedList,parkingSpaceManager.getAllParkingSpaces(), estate);
         blockLinkedList.add(block);
 
 
@@ -106,14 +107,14 @@ public class Main {
                     break;
                 case "p":
                     System.out.println("Show all the parking spaces");
-                        for (ParkingSpace parkingSpace : parkingSpaceLinkedList) {
+                        for (ParkingSpace parkingSpace : parkingSpaceManager.getAllParkingSpaces()) {
                             System.out.println(parkingSpace);
                         }
                         seeMenu();
                     break;
                 case "o":
                     System.out.println("Show all the persons");
-                        for (Tenant tenant : tenantManager.getAllTenants()) {
+                        for (Tenant tenant : TenantManager.getAllTenants()) {
                             System.out.println(tenant);
                         }
                         seeMenu();

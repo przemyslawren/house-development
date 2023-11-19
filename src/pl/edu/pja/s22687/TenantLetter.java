@@ -1,23 +1,23 @@
 package pl.edu.pja.s22687;
 
+import pl.edu.pja.s22687.apartment.Property;
 import pl.edu.pja.s22687.person.Tenant;
+import pl.edu.pja.s22687.utilities.SharedDate;
+
+import java.time.LocalDate;
 
 public class TenantLetter {
 
     private Tenant tenant;
-    private String date;
-    private String content;
-    private double debt;
+    private LocalDate receivedDate;
 
-    public TenantLetter(Tenant tenant, String date, String content, double debt) {
+    public TenantLetter(Tenant tenant) {
         this.tenant = tenant;
-        this.date = date;
-        this.content = content;
-        this.debt = debt;
+        this.receivedDate = SharedDate.getInstance().getDate();
     }
 
+    @Override
     public String toString() {
-        return "TenantLetter: " + tenant + ", " + date + ", " + content + ", " + debt;
+        return "Dear " + tenant.getName() + " on day " + receivedDate + " we have received a letter about your late rent, please pay your debt or there will be consequences" + "\n" ;
     }
-
 }
