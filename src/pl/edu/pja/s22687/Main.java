@@ -30,7 +30,6 @@ public class Main {
     }
 
     public static void mainMenu() throws ProblematicTenantException, TooManyThingsException {
-        File storedDataFile = new File("data.txt");
         Developer developer = Developer.getInstance();
         TenantManager tenantManager = new TenantManager();
         ParkingSpaceManager parkingSpaceManager = new ParkingSpaceManager();
@@ -71,9 +70,9 @@ public class Main {
         Item i1 = new Item("Bike", 2);
 
         p1.addItem(c1);
-        p1.addItem(m1);
-        p2.addItem(c2);
-        p3.addItem(m2);
+        p2.addItem(m1);
+        p3.addItem(c2);
+        p4.addItem(m2);
         p4.addItem(c3);
 
         p1.addItem(i1);

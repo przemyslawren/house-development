@@ -18,20 +18,20 @@ public class DateAndRentManager implements Runnable {
     public void run() {
         try {
             while (!Thread.currentThread().isInterrupted()) {
-                Thread.sleep(1000); // Sleep for 1 second
+                Thread.sleep(1000);
                 dateCounter += 1000;
                 rentCounter += 1000;
 
                 if (dateCounter >= 5000) {
                     this.sharedDate.advanceDay();
-                    dateCounter = 0; // Reset counter
+                    dateCounter = 0;
                 }
 
                 if (rentCounter >= 10000 && checkRents) {
                         System.out.println("Checking rents for " + this.sharedDate.getDate() + "\n");
                         checkRent();
 
-                    rentCounter = 0; // Reset counter
+                    rentCounter = 0;
                 }
             }
         } catch (InterruptedException e) {

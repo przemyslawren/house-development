@@ -4,7 +4,9 @@
    Address: Redutowa 130, 01-106 Warsaw
    Date of Birth: 1982-01-01
    Properties: 2
-   Tenant Letters: []
+   Tenant Letters: [Dear Lukas on day 2023-11-25 we have received a letter about your late rent, please pay your debt or there will be consequences
+, Dear Lukas on day 2023-11-25 we have received a letter about your late rent, please pay your debt or there will be consequences
+]
 
 
 -------------
@@ -24,7 +26,8 @@
    Address: Redutowa 130, 01-106 Warsaw
    Date of Birth: 1990-12-13
    Properties: 1
-   Tenant Letters: []
+   Tenant Letters: [Dear Andreas on day 2023-11-25 we have received a letter about your late rent, please pay your debt or there will be consequences
+]
 
 
 -------------
@@ -34,7 +37,8 @@
    Address: Redutowa 130, 01-106 Warsaw
    Date of Birth: 1967-05-08
    Properties: 1
-   Tenant Letters: []
+   Tenant Letters: [Dear Barbara on day 2023-11-25 we have received a letter about your late rent, please pay your debt or there will be consequences
+]
 
 
 -------------
@@ -44,7 +48,8 @@
    Address: Redutowa 130, 01-106 Warsaw
    Date of Birth: 1999-09-09
    Properties: 1
-   Tenant Letters: []
+   Tenant Letters: [Dear Max on day 2023-11-25 we have received a letter about your late rent, please pay your debt or there will be consequences
+]
 
 
 -------------

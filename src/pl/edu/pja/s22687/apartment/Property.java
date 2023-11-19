@@ -10,7 +10,7 @@ public class Property {
     private LocalDate startRent;
     private LocalDate endRent;
     public Rent.RentStatus status;
-    protected static int nextId = 1; //static variable that holds next id to be assigned
+    protected static int nextId = 1;
     protected int id;
     protected double area;
     protected static Map<Integer, Property> properties = new HashMap<>();
