@@ -1,0 +1,50 @@
+ - Main Tenant
+   Full Name: Lukas Kowalski
+   PersonalID: 82060369697
+   Address: Redutowa 130, 01-106 Warsaw
+   Date of Birth: 1982-01-01
+   Properties: 2
+   Tenant Letters: []
+
+
+-------------
+ - Main Tenant
+   Full Name: Krzysztof Nowak
+   PersonalID: 54012716468
+   Address: Redutowa 130, 01-106 Warsaw
+   Date of Birth: 1954-07-05
+   Properties: 0
+   Tenant Letters: []
+
+
+-------------
+ - Main Tenant
+   Full Name: Andreas Muller
+   PersonalID: 80052331488
+   Address: Redutowa 130, 01-106 Warsaw
+   Date of Birth: 1990-12-13
+   Properties: 1
+   Tenant Letters: []
+
+
+-------------
+ - Main Tenant
+   Full Name: Barbara SchwarzMuller
+   PersonalID: 67112731899
+   Address: Redutowa 130, 01-106 Warsaw
+   Date of Birth: 1967-05-08
+   Properties: 1
+   Tenant Letters: []
+
+
+-------------
+ - Main Tenant
+   Full Name: Max Smith
+   PersonalID: 99030537275
+   Address: Redutowa 130, 01-106 Warsaw
+   Date of Birth: 1999-09-09
+   Properties: 1
+   Tenant Letters: []
+
+
+-------------

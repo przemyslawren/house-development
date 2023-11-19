@@ -70,6 +70,23 @@ public class Tenant extends Person implements IRent {
         }
     }
 
+    public void renewRent(Property property, int additionalDays) throws ProblematicTenantException {
+        if (!properties.contains(property)) {
+            throw new ProblematicTenantException("This property is not rented by the tenant.");
+        }
+
+        LocalDate newEndRentDate = property.getEndRent().plusDays(additionalDays);
+        property.setEndRent(newEndRentDate);
+        property.setRentStatus(Rent.RentStatus.RENEWED);
+        System.out.println("Rent for " + property + " has been renewed until " + newEndRentDate);
+
+        removeTenantLetterForProperty(property);
+    }
+
+    private void removeTenantLetterForProperty(Property property) {
+        tenantLetters.removeIf(letter -> letter.getProperty().equals(property));
+    }
+
     public ArrayList<Property> getListOfProperties() {
         return this.properties;
     }

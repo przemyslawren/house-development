@@ -12,6 +12,8 @@ import pl.edu.pja.s22687.utilities.TenantManager;
 import pl.edu.pja.s22687.vehicle.*;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -29,11 +31,11 @@ public class Main {
     }
 
     public static void mainMenu() throws ProblematicTenantException, TooManyThingsException {
+        File storedDataFile = new File("data.txt");
         Developer developer = Developer.getInstance();
         TenantManager tenantManager = new TenantManager();
         ParkingSpaceManager parkingSpaceManager = new ParkingSpaceManager();
         LinkedList<Block> blockLinkedList = new LinkedList<>();
-        File storedData = new File("data.txt");
         Address address = new Address("Redutowa", "130", "01-106", "Warsaw");
 
         Apartment a1 = new Apartment(152.30);
@@ -83,11 +85,11 @@ public class Main {
         Tenant t3 = new Tenant("Andreas", "Muller", "80052331488", address, "1990-12-13"); //tenant with apartment
         Tenant t4 = new Tenant("Barbara", "SchwarzMuller", "67112731899", address, "1967-05-08"); //tenant with apartment
         Tenant t5 = new Tenant("Max", "Smith", "99030537275", address, "1999-09-09"); //tenant with apartment
-        Tenant t6 = new Tenant("a", "Kowalski", "82060369697", address, "1982-01-01"); //tenant without apartment
-        Tenant t7 = new Tenant("b", "Kowalski", "54012716468", address, "1954-07-05"); //tenant without apartment
-        Tenant t8 = new Tenant("c", "Muller", "80052331488", address, "1990-12-13"); //tenant without apartment
-        Tenant t9 = new Tenant("d", "Muller", "67112731899", address, "1967-05-08"); //tenant without apartment
-        Tenant t10 = new Tenant("e", "Muller", "99030537275", address, "1999-09-09"); //tenant without apartment
+        Tenant t6 = new Tenant("Anna", "Kowalska", "82060369697", address, "1982-01-01"); //tenant without apartment
+        Tenant t7 = new Tenant("Zosia", "Wojenka", "54012716468", address, "1954-07-05"); //tenant without apartment
+        Tenant t8 = new Tenant("Bartek", "Srogi", "80052331488", address, "1990-12-13"); //tenant without apartment
+        Tenant t9 = new Tenant("Wioleta", "Kwiatkowska", "67112731899", address, "1967-05-08"); //tenant without apartment
+        Tenant t10 = new Tenant("Kuba", "Trzebiński", "99030537275", address, "1999-09-09"); //tenant without apartment
 
         tenantManager.addTenant(t1);
         tenantManager.addTenant(t2);
@@ -101,10 +103,16 @@ public class Main {
         t4.rent(a4,4);
         t5.rent(a5,5);
 
+//        try {
+//            t1.renewRent(a1, 10);
+//            System.out.println("Rent renewed successfully.");
+//        } catch (ProblematicTenantException e) {
+//            System.out.println("Error renewing rent: " + e.getMessage());
+//        }
+
         Estate estate = new Estate(developer, blockLinkedList);
         Block block = new Block(apartmentLinkedList,parkingSpaceManager.getAllParkingSpaces(), estate);
         blockLinkedList.add(block);
-
 
         textMenu();
         String choice;
@@ -117,7 +125,6 @@ public class Main {
                         dateAndRentManager.toggleRentChecking();
                     }
                     break;
-
                 case "a":
                     System.out.println("Show all the apartments");
                         for (Apartment apartment : apartmentLinkedList) {
@@ -147,6 +154,8 @@ public class Main {
                         seeMenu();
                 case "s":
                     System.out.println("Save the data to a file");
+                    List<Tenant> tenants = TenantManager.getAllTenants();
+                    saveTenantsToFile(tenants, "tenants.txt");
                     break;
                 case "m":
                     textMenu();
@@ -174,5 +183,18 @@ public class Main {
 
     public static void seeMenu() {
         System.out.println("m: Show the menu");
+    }
+
+    public static void saveTenantsToFile(List<Tenant> tenants, String fileName) {
+        File file = new File(fileName);
+        try (PrintWriter writer = new PrintWriter(file)) {
+            for (Tenant tenant : tenants) {
+                writer.println(tenant.toString());
+                writer.println("-------------");
+            }
+            System.out.println("Tenants information saved to " + fileName);
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred while saving to file: " + e.getMessage());
+        }
     }
 }

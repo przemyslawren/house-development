@@ -20,4 +20,8 @@ public class TenantLetter {
     public String toString() {
         return "Dear " + tenant.getName() + " on day " + receivedDate + " we have received a letter about your late rent, please pay your debt or there will be consequences" + "\n" ;
     }
+
+    public Property getProperty() {
+        return tenant.getListOfProperties().get(0);
+    }
 }
