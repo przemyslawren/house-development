@@ -1,6 +1,6 @@
 <h1>Tenant Rent Manager</h1>
-<h2>First OOP Application</h2>
-This project is a Java-based application designed as my first app for OOP classes. The primary function of this app is to manage the rents of tenants,
+<h2>First console OOP Application</h2>
+This project is a console Java-based application designed as my first app for OOP classes. The primary function of this app is to manage the rents of tenants,
 including features such as tracking rent payments, notifying tenants who are late on rent, and generating letters for those tenants.
 <br><br>
 Key features include:
@@ -14,6 +14,7 @@ Key features include:
   <li><strong>Interfaces:</strong> To ensure consistent implementation of essential methods related to tenant and rent management.</li>
   <li><strong>Generic Types:</strong> Allowing for flexible and type-safe handling of different data types within the application.</li>
   <li><strong>Objects:</strong> The core of OOP, each tenant and rent transaction is represented as an object, encapsulating their data and behaviors.</li>
+  <li><strong>Threads:</strong> Implements threads to periodically check rent status, ensuring timely updates and notifications.</li>
   <li><strong>Exceptions:</strong> Implementing custom exceptions to handle specific error scenarios gracefully, enhancing the reliability of the application.</li>
 </ul>
 <br>
@@ -21,3 +22,7 @@ Key features include:
 <br><br>
 This project demonstrates the practical application of essential Java OOP concepts, including interfaces, generic types, object-oriented design, exception handling, and file management.
 It serves as a foundational project for understanding and implementing basic OOP principles in real-world scenarios.
+
+<br><br>
+
+![image](https://github.com/przemyslawren/house-development/assets/122983696/c5c25111-b9fa-47e6-ae09-ff95cf310c69)
